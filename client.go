@@ -201,11 +201,6 @@ func (mc *ModbusClient) Open() (err error) {
 	var spw *serialPortWrapper
 	var sock net.Conn
 
-	err = mc.Close()
-	if err != nil {
-		return
-	}
-
 	mc.lock.Lock()
 	defer mc.lock.Unlock()
 
