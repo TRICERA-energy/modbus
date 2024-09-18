@@ -201,13 +201,13 @@ func (mc *ModbusClient) Open() (err error) {
 	var spw *serialPortWrapper
 	var sock net.Conn
 
-	mc.lock.Lock()
-	defer mc.lock.Unlock()
-
 	err = mc.Close()
 	if err != nil {
 		return
 	}
+
+	mc.lock.Lock()
+	defer mc.lock.Unlock()
 
 	switch mc.transportType {
 	case modbusRTU:
